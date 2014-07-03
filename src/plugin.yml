@@ -1,0 +1,5 @@
+name: ${project.name}
+main: ${mainClass}
+version: 1.0
+description: PVP minigame heavily based on World of Tanks.
+author: Musician101
