@@ -6,8 +6,8 @@ import org.bukkit.event.HandlerList;
 
 public class SpigotCommandEvent extends Event
 {
-	private static final HandlerList handlers = new HandlerList();
-	CommandSender commandSender;
+    private static final HandlerList handlers = new HandlerList();
+    CommandSender commandSender;
     String command;
     String[] arguments;
 
@@ -32,31 +32,31 @@ public class SpigotCommandEvent extends Event
             this.arguments = null;
         }
     }
-	
-	public CommandSender getCommandSender()
-	{
-		return commandSender;
-	}
-	
-	public String getCommand()
-	{
-		return command;
-	}
-	
-	public String[] getArguments()
-	{
-		return arguments;
-	}
-	
-	@Override
-	public HandlerList getHandlers()
-	{
-		return handlers;
-	}
 
-	@SuppressWarnings("unused")
-	public static HandlerList getHandlerList()
-	{
-		return handlers;
-	}
+    public CommandSender getCommandSender()
+    {
+        return commandSender;
+    }
+
+    public String getCommand()
+    {
+        return command;
+    }
+
+    public String[] getArguments()
+    {
+        return arguments;
+    }
+
+    @Override
+    public HandlerList getHandlers()
+    {
+        return handlers;
+    }
+
+    @SuppressWarnings("unused")
+    public static HandlerList getHandlerList()
+    {
+        return handlers;
+    }
 }

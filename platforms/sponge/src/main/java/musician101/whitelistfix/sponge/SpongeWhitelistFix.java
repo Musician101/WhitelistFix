@@ -20,16 +20,16 @@ public class SpongeWhitelistFix
 {
     public static SpongeWhitelistFix instance;
 
-	@Listener
-	public void preInit(GameStartedServerEvent event)
-	{
+    @Listener
+    public void preInit(GameStartedServerEvent event)
+    {
         instance = this;
         Sponge.getEventManager().registerListener(this, SendCommandEvent.class, new SpongeCommandListener());
-		kickNonWhitelistedPlayers();
-	}
-	
-	public void kickNonWhitelistedPlayers()
-	{
+        kickNonWhitelistedPlayers();
+    }
+
+    public void kickNonWhitelistedPlayers()
+    {
         Server server = Sponge.getServer();
         if (!server.hasWhitelist())
             return;
@@ -49,5 +49,5 @@ public class SpongeWhitelistFix
                         player.kick(Text.of(Reference.KICK_REASON));
             }
         }).delayTicks(1L).name(Reference.NAME + "-KickDelay").submit(Sponge.getPluginManager().getPlugin(Reference.ID));
-	}
+    }
 }

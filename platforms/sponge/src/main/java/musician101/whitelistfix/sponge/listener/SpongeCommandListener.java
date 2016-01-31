@@ -12,16 +12,16 @@ import java.util.Optional;
 
 public class SpongeCommandListener implements EventListener<SendCommandEvent>
 {
-	public SpongeCommandListener()
-	{
+    public SpongeCommandListener()
+    {
 
-	}
-	
-	@Override
-	public void handle(@Nonnull SendCommandEvent event)
-	{
-		if (!event.getCommand().equalsIgnoreCase(Commands.WHITELIST))
-			return;
+    }
+
+    @Override
+    public void handle(@Nonnull SendCommandEvent event)
+    {
+        if (!event.getCommand().equalsIgnoreCase(Commands.WHITELIST))
+            return;
 
         Optional<CommandBlockSource> cbso = event.getCause().first(CommandBlockSource.class);
         Optional<SignSource> sso = event.getCause().first(SignSource.class);
@@ -33,5 +33,5 @@ public class SpongeCommandListener implements EventListener<SendCommandEvent>
             return;
 
         SpongeWhitelistFix.instance.kickNonWhitelistedPlayers();
-	}
+    }
 }
