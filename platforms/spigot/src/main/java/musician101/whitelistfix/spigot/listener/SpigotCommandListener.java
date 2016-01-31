@@ -15,7 +15,7 @@ import org.bukkit.event.server.ServerCommandEvent;
 
 public class SpigotCommandListener implements Listener
 {
-    public SpigotWhitelistFix plugin;
+    private final SpigotWhitelistFix plugin;
 
     public SpigotCommandListener(SpigotWhitelistFix plugin)
     {

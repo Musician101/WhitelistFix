@@ -4,7 +4,6 @@ import musician101.whitelistfix.Reference;
 import musician101.whitelistfix.sponge.listener.SpongeCommandListener;
 import org.spongepowered.api.Server;
 import org.spongepowered.api.Sponge;
-import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.command.SendCommandEvent;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
@@ -39,15 +38,8 @@ public class SpongeWhitelistFix
             return;
 
         WhitelistService whitelistService = whitelistServiceOptional.get();
-        Task.builder().execute(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                for (Player player : Sponge.getServer().getOnlinePlayers())
-                    if (!whitelistService.isWhitelisted(player.getProfile()))
-                        player.kick(Text.of(Reference.KICK_REASON));
-            }
+        Task.builder().execute(() -> {
+            Sponge.getServer().getOnlinePlayers().stream().filter(player -> !whitelistService.isWhitelisted(player.getProfile())).forEach(player -> player.kick(Text.of(Reference.KICK_REASON)));
         }).delayTicks(1L).name(Reference.NAME + "-KickDelay").submit(Sponge.getPluginManager().getPlugin(Reference.ID));
     }
 }

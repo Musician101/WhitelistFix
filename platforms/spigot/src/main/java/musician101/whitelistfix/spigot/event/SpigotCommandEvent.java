@@ -7,9 +7,9 @@ import org.bukkit.event.HandlerList;
 public class SpigotCommandEvent extends Event
 {
     private static final HandlerList handlers = new HandlerList();
-    CommandSender commandSender;
-    String command;
-    String[] arguments;
+    private final CommandSender commandSender;
+    private String command;
+    private String[] arguments;
 
     public SpigotCommandEvent(CommandSender commandSender, String msg)
     {
