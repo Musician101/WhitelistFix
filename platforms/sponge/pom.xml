@@ -67,16 +67,16 @@
             <version>2.0</version>
         </dependency>
         <dependency>
-            <groupId>org.spongepowered</groupId>
-            <artifactId>spongeapi</artifactId>
-            <version>3.1.0-SNAPSHOT</version>
+            <groupId>musician101.common.java.minecraft</groupId>
+            <artifactId>sponge</artifactId>
+            <version>2.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
     <repositories>
         <repository>
-            <id>spongeapi-repo</id>
-            <url>http://repo.spongepowered.org/maven</url>
+            <id>Common-Sponge</id>
+            <url>https://raw.github.com/Musician101/Common/sponge-repo</url>
         </repository>
     </repositories>
 </project>
