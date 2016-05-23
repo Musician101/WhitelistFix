@@ -1,7 +1,7 @@
-package musician101.whitelistfix.sponge.listener;
+package io.musician101.whitelistfix.sponge.listener;
 
-import musician101.whitelistfix.Reference.Commands;
-import musician101.whitelistfix.sponge.SpongeWhitelistFix;
+import io.musician101.whitelistfix.Reference.Commands;
+import io.musician101.whitelistfix.sponge.SpongeWhitelistFix;
 import org.spongepowered.api.command.source.CommandBlockSource;
 import org.spongepowered.api.command.source.SignSource;
 import org.spongepowered.api.event.EventListener;
@@ -12,13 +12,13 @@ import java.util.Optional;
 
 public class SpongeCommandListener implements EventListener<SendCommandEvent>
 {
-    public SpongeCommandListener()
+    public SpongeCommandListener()//NOSONAR
     {
 
     }
 
     @Override
-    public void handle(@Nonnull SendCommandEvent event)
+    public void handle(@Nonnull SendCommandEvent event)//NOSONAR
     {
         if (!event.getCommand().equalsIgnoreCase(Commands.WHITELIST))
             return;
@@ -28,10 +28,14 @@ public class SpongeCommandListener implements EventListener<SendCommandEvent>
         if (cbso.isPresent() || sso.isPresent())
             return;
 
-        String firstArg = event.getArguments().split(" ")[0];
+        String arguments = event.getArguments();
+        if (arguments.isEmpty())
+            return;
+
+        String firstArg = arguments.split(" ")[0];
         if (!firstArg.equalsIgnoreCase(Commands.ON) || !firstArg.equalsIgnoreCase(Commands.RELOAD) || !firstArg.equalsIgnoreCase(Commands.REMOVE))
             return;
 
-        SpongeWhitelistFix.instance.kickNonWhitelistedPlayers();
+        SpongeWhitelistFix.instance().kickNonWhitelistedPlayers();
     }
 }

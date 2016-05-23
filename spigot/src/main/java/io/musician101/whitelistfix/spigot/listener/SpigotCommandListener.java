@@ -1,8 +1,8 @@
-package musician101.whitelistfix.spigot.listener;
+package io.musician101.whitelistfix.spigot.listener;
 
-import musician101.whitelistfix.Reference.Commands;
-import musician101.whitelistfix.spigot.SpigotWhitelistFix;
-import musician101.whitelistfix.spigot.event.SpigotCommandEvent;
+import io.musician101.whitelistfix.Reference.Commands;
+import io.musician101.whitelistfix.spigot.SpigotWhitelistFix;
+import io.musician101.whitelistfix.spigot.event.SpigotCommandEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.CommandSender;
@@ -15,11 +15,9 @@ import org.bukkit.event.server.ServerCommandEvent;
 
 public class SpigotCommandListener implements Listener
 {
-    private final SpigotWhitelistFix plugin;
-
-    public SpigotCommandListener(SpigotWhitelistFix plugin)
+    public SpigotCommandListener()//NOSONAR
     {
-        this.plugin = plugin;
+
     }
 
     @EventHandler
@@ -36,7 +34,7 @@ public class SpigotCommandListener implements Listener
             return;
 
         if (args[0].equalsIgnoreCase(Commands.ON) || args[0].equalsIgnoreCase(Commands.RELOAD) || args[0].equalsIgnoreCase(Commands.REMOVE))
-            plugin.kickNonWhitelistedPlayers();
+            SpigotWhitelistFix.instance().kickNonWhitelistedPlayers();
     }
 
     @EventHandler

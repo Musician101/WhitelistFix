@@ -1,7 +1,8 @@
-package musician101.whitelistfix.sponge;
+package io.musician101.whitelistfix.sponge;
 
-import musician101.whitelistfix.Reference;
-import musician101.whitelistfix.sponge.listener.SpongeCommandListener;
+import io.musician101.whitelistfix.IWhitelistFix;
+import io.musician101.whitelistfix.Reference;
+import io.musician101.whitelistfix.sponge.listener.SpongeCommandListener;
 import org.spongepowered.api.Server;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.event.Listener;
@@ -14,15 +15,12 @@ import org.spongepowered.api.text.Text;
 
 import java.util.Optional;
 
-@Plugin(id = Reference.ID, name = Reference.NAME, version = Reference.VERSION)
-public class SpongeWhitelistFix
+@Plugin(id = Reference.ID, name = Reference.NAME, version = Reference.VERSION, description = Reference.DESCRIPTION)
+public class SpongeWhitelistFix implements IWhitelistFix
 {
-    public static SpongeWhitelistFix instance;
-
     @Listener
-    public void preInit(GameStartedServerEvent event)
+    public void preInit(GameStartedServerEvent event)//NOSONAR
     {
-        instance = this;
         Sponge.getEventManager().registerListener(this, SendCommandEvent.class, new SpongeCommandListener());
         kickNonWhitelistedPlayers();
     }
@@ -38,8 +36,12 @@ public class SpongeWhitelistFix
             return;
 
         WhitelistService whitelistService = whitelistServiceOptional.get();
-        Task.builder().execute(() -> {
-            Sponge.getServer().getOnlinePlayers().stream().filter(player -> !whitelistService.isWhitelisted(player.getProfile())).forEach(player -> player.kick(Text.of(Reference.KICK_REASON)));
-        }).delayTicks(1L).name(Reference.NAME + "-KickDelay").submit(Sponge.getPluginManager().getPlugin(Reference.ID));
+        Task.builder().execute(() -> Sponge.getServer().getOnlinePlayers().stream().filter(player -> !whitelistService.isWhitelisted(player.getProfile())).forEach(player -> player.kick(Text.of(Reference.KICK_REASON)))).delayTicks(1L).name(Reference.NAME + "-KickDelay").submit(Sponge.getPluginManager().getPlugin(Reference.ID));
+    }
+
+    public static SpongeWhitelistFix instance()
+    {
+        //noinspection OptionalGetWithoutIsPresent
+        return (SpongeWhitelistFix) Sponge.getPluginManager().getPlugin(Reference.ID).get();
     }
 }

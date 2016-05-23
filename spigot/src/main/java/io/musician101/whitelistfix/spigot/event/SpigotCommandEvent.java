@@ -1,4 +1,4 @@
-package musician101.whitelistfix.spigot.event;
+package io.musician101.whitelistfix.spigot.event;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Event;

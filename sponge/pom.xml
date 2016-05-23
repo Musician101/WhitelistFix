@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>musician101.whitelistfix</groupId>
+    <groupId>io.musician101.whitelistfix</groupId>
     <artifactId>sponge</artifactId>
     <name>WhitelistFix-Sponge</name>
     <description>WhitelistFix for Sponge</description>
 
     <parent>
-        <groupId>musician101</groupId>
+        <groupId>io.musician101</groupId>
         <artifactId>whitelistfix</artifactId>
-        <version>2.0</version>
-        <relativePath>../../pom.xml</relativePath>
+        <version>2.1</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <build>
@@ -62,21 +62,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>musician101.whitelistfix</groupId>
+            <groupId>io.musician101.whitelistfix</groupId>
             <artifactId>common</artifactId>
-            <version>2.0</version>
+            <version>2.1</version>
         </dependency>
         <dependency>
-            <groupId>musician101.common.java.minecraft</groupId>
+            <groupId>io.musician101.common.java.minecraft</groupId>
             <artifactId>sponge</artifactId>
-            <version>2.0-SNAPSHOT</version>
+            <version>3.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>Common-Sponge</id>
-            <url>https://raw.github.com/Musician101/Common/sponge-repo</url>
-        </repository>
-    </repositories>
 </project>
