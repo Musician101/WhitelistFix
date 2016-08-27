@@ -50,8 +50,11 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                             <artifactSet>
-                                <includes>musician101.whitelistfix:common</includes>
+                                <includes>
+                                    <include>io.musician101.whitelistfix:common</include>
+                                </includes>
                             </artifactSet>
                         </configuration>
                     </execution>
