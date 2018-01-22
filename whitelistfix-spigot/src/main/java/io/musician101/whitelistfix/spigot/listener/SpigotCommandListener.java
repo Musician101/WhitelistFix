@@ -15,11 +15,6 @@ import org.bukkit.event.server.ServerCommandEvent;
 
 public class SpigotCommandListener implements Listener {
 
-    public SpigotCommandListener()//NOSONAR
-    {
-
-    }
-
     @EventHandler
     public void onCommand(SpigotCommandEvent event) {
         CommandSender sender = event.getCommandSender();
