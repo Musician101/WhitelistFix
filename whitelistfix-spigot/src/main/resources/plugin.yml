@@ -1,0 +1,5 @@
+name: SpigotWhitelistFix
+main: io.musician101.whitelistfix.spigot.SpigotWhitelistFix
+version: @version@
+description: Fixes players not being kicked when the vanilla whitelist is activated/changed.
+author: Musician101

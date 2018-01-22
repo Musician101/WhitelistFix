@@ -1,0 +1,3 @@
+rootProject.name = 'WhitelistFix'
+
+include 'whitelistfix-common', 'whitelistfix-spigot', 'whitelistfix-sponge'
