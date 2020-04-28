@@ -12,7 +12,7 @@ public class Reference {
 
     }
 
-    public class Commands {
+    public static class Commands {
 
         public static final String ON = "on";
         public static final String RELOAD = "reload";
